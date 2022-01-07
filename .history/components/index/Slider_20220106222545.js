@@ -1,0 +1,1 @@
+import Slider from "../components/index/Slider";
