@@ -2,6 +2,8 @@
 // 	const res = await fetch('https://jsonplaceholder.typicode.com/users');
 // 	const data = await res.json();
 
+import Layout from "../../components/Layout";
+
 // 	const paths = data.map((monan) => {
 // 		return {
 // 			params: { id: monan.id.toString() },
@@ -34,3 +36,7 @@ const Details = ({ food }) => {
 };
 
 export default Details;
+
+Details.getLayout = function getLayout(page) {
+	return <Layout>{page}</Layout>;
+  };

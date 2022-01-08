@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Layout from "../components/Layout";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const getServerSideProps = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -17,17 +17,18 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home() {
-	return (
-		<>
-			<Head>
-				<title>EzOrder | Home</title>
-				<meta name="keywords" content="EzOrder"></meta>
-			</Head>
-			<div>This is Home</div>
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>EzOrder | Home</title>
+        <meta name="keywords" content="EzOrder"></meta>
+      </Head>
+      <div>This is Home</div>
+	  <button onClick={() => signIn()}>Sign in</button>
+    </>
+  );
 }
 
-Index.getLayout = function getLayout(page) {
+Home.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
