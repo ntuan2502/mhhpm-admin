@@ -1,10 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 const Navbar = () => {
 	return (
-		<nav>
-			<h1>This is Navbar</h1>
+		<nav className="flex">
+			<div className="font-Muli text-[24px] font-bold">Food List</div>
+			<div className="text-gray-400">
+				<FontAwesomeIcon icon={faBell}></FontAwesomeIcon>
+			</div>
+			<div>Jones Ferdinand</div>
+			<div>
+				<img
+					className="object-cover w-11 h-11 border-4 border-[#DFE0EB] rounded-full"
+					src="/assets/images/avatar.png"
+					alt="avatar"
+				/>
+			</div>
 		</nav>
 	);
 };

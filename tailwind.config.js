@@ -7,6 +7,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				Mulish: ['Mulish'],
+				Muli: ['Muli'],
 			},
 		},
 	},
