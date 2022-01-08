@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Layout from "../../components/Layout";
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://ezorder-be.herokuapp.com/bills");
   const data = await res.json();
 
   return {
