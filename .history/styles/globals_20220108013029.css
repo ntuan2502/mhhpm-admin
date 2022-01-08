@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Mulish';
+	src: url(/assets/fonts/Mulish/Mulish-VariableFont_wght.ttf);
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Muli';
+	src: url(/assets/fonts/Mulish/Mulish-VariableFont_wght.ttf);
+	font-style: normal;
+	font-weight: 7000;
+	font-size: large;
+}
