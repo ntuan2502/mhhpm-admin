@@ -18,7 +18,7 @@ const BillDetail = ({ food }) => {
   var data = food;
   useEffect(() => {
     router.push({
-      pathname: "/bill-detail/" + data[0].id,
+      pathname: "/bill_detail/" + data[0].id,
     });
   });
   return <div>Redirecting...</div>;
