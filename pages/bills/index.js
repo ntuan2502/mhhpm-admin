@@ -1,15 +1,15 @@
+import axios from "axios";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { useEffect } from "react";
 import Layout from "../../components/Layout";
 
-export const getStaticProps = async () => {
-  const res = await fetch("https://ezorder-be.herokuapp.com/bills");
-  const data = await res.json();
+export const getServerSideProps = async () => {
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/bills`);
+  const food = await res.data;
 
   return {
-    props: { food: data },
-    revalidate: 10,
+    props: { food },
   };
 };
 
@@ -18,7 +18,7 @@ const BillDetail = ({ food }) => {
   var data = food;
   useEffect(() => {
     router.push({
-      pathname: "/bill_detail/" + data[0].id,
+      pathname: "/bills/" + data[0].id,
     });
   });
   return <div>Redirecting...</div>;

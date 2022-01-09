@@ -1,29 +1,15 @@
-// export const getStaticPaths = async () => {
-// 	const res = await fetch('https://jsonplaceholder.typicode.com/users');
-// 	const data = await res.json();
-
-// 	const paths = data.map((monan) => {
-// 		return {
-// 			params: { id: monan.id.toString() },
-// 		};
-// 	});
-
-// 	return {
-// 		paths,
-// 		fallback: false,
-// 	};
-// };
-import { currencyFormat } from "../../lib/lib";
+import { currencyFormat, dateFormat } from "../../lib/lib";
 import { Router, useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import axios from "axios";
 
 export const getServerSideProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(
-    "https://ezorder-be.herokuapp.com/bill-details?_where[bill.id]=" + id
+  const res = await axios.get(
+    process.env.NEXT_PUBLIC_BACKEND_URL + "/bill-details?_where[bill.id]=" + id
   );
-  const billDetails = await res.json();
+  const billDetails = await res.data;
 
   return {
     props: { billDetails },
@@ -39,7 +25,12 @@ const Details = ({ billDetails }) => {
         </h1>
         <div className="grid grid-rows-2 pr-48">
           <h2>Total number:</h2>
-          <h2>Date</h2>
+          <h2 className="flex">
+            Date:
+            <div className="font-semibold pl-1">
+              {dateFormat(billDetails[0].bill.createdAt)}
+            </div>
+          </h2>
         </div>
       </div>
       <div className="grid grid-cols-5 pr-6 pl-6 pt-2 pb-2 ">
@@ -66,7 +57,7 @@ const Details = ({ billDetails }) => {
         <div></div>
         <div></div>
         <div className="place-self-center">
-          {billDetails[0].bill.total_prices}
+          {currencyFormat(billDetails[0].bill.total_prices)}
         </div>
         <div className="col-span-2 place-self-center">
           <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full mr-4">

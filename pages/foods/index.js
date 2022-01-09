@@ -16,7 +16,7 @@ const Bill = ({ food }) => {
     <div>
       <h1>All Order</h1>
       {food.map((monan) => (
-        <Link href={"/bill/" + monan.id} key={monan.id}>
+        <Link href={"/foods/" + monan.id} key={monan.id}>
           <a>
             <h3>{monan.name}</h3>
           </a>
