@@ -10,6 +10,7 @@ import {
 	faUtensils,
 	faChartPie,
 } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export default function Sidebar() {
 	return (
@@ -27,24 +28,30 @@ export default function Sidebar() {
 					<FontAwesomeIcon icon={faCaretDown} />
 				</div>
 			</div>
-			<div className="text-[16px] flex font-Mulish bg-[#D85050] p-4 text-black ">
-				<div className="w-2/5 pl-12">
-					<FontAwesomeIcon icon={faSpinner} />
+			<Link href="/food_list/pending">
+				<div className="text-[16px] flex font-Mulish bg-[#D85050] p-4 text-black cursor-pointer">
+					<div className="w-2/5 pl-12">
+						<FontAwesomeIcon icon={faSpinner} />
+					</div>
+					<div className="">Pending</div>
 				</div>
-				<div className="">Pending</div>
-			</div>
-			<div className="text-[16px] flex font-Mulish bg-[#EB5757] p-4 text-black">
-				<div className="w-2/5 pl-12">
-					<FontAwesomeIcon icon={faBan} />
+			</Link>
+			<Link href="/food_list/reject">
+				<div className="text-[16px] flex font-Mulish bg-[#EB5757] p-4 text-black cursor-pointer">
+					<div className="w-2/5 pl-12">
+						<FontAwesomeIcon icon={faBan} />
+					</div>
+					<div>Reject</div>
 				</div>
-				<div>Reject</div>
-			</div>
-			<div className="text-[16px] flex font-Mulish bg-[#EB5757] p-4 text-black">
-				<div className="w-2/5 pl-12">
-					<FontAwesomeIcon icon={faAward} />
+			</Link>
+			<Link href="/food_list/done">
+				<div className="text-[16px] flex font-Mulish bg-[#EB5757] p-4 text-black cursor-pointer">
+					<div className="w-2/5 pl-12">
+						<FontAwesomeIcon icon={faAward} />
+					</div>
+					<div>Done</div>
 				</div>
-				<div>Done</div>
-			</div>
+			</Link>
 
 			<div className="text-[16px] flex justify-center font-Mulish bg-[#C74A4A] p-4 text-white ">
 				<div className="pl-5 w-3/12">
