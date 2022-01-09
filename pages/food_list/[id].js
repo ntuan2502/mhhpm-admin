@@ -30,40 +30,40 @@ export const getServerSideProps = async (context) => {
 const Details = ({ billDetails }) => {
 
   return (
-    <div class="border-2 border-gray border-solid rounded m-12 divide-y">
-      <div class="flex justify-between pr-6 pl-6 pt-4 pb-4 ">
-        <h1 class="pt-2 text-2xl font-bold"> Bill ID: {billDetails[0].bill.id}</h1>
-        <div class="grid grid-rows-2 pr-48">
+    <div className="border-2 border-gray border-solid rounded m-12 divide-y">
+      <div className="flex justify-between pr-6 pl-6 pt-4 pb-4 ">
+        <h1 className="pt-2 text-2xl font-bold"> Bill ID: {billDetails[0].bill.id}</h1>
+        <div className="grid grid-rows-2 pr-48">
           <h2>Total number:</h2>
           <h2>Date</h2>
         </div>
       </div>
-      <div class="grid grid-cols-5 pr-6 pl-6 pt-2 pb-2 ">
-        <div class="text-gray-400">Name Food</div>
-        <div class="place-self-center text-gray-400">Quantity</div>
-        <div class="place-self-center text-gray-400">Money</div>
-        <div class="col-span-2 place-self-center text-gray-400">Note</div>
+      <div className="grid grid-cols-5 pr-6 pl-6 pt-2 pb-2 ">
+        <div className="text-gray-400">Name Food</div>
+        <div className="place-self-center text-gray-400">Quantity</div>
+        <div className="place-self-center text-gray-400">Money</div>
+        <div className="col-span-2 place-self-center text-gray-400">Note</div>
       </div>
 
       {billDetails.map((billDetail) => (
-        <div class="grid grid-cols-5 pr-6 pl-6 pt-6 pb-6 "> 
+        <div className="grid grid-cols-5 pr-6 pl-6 pt-6 pb-6 "> 
             <div>{billDetail.food.name}</div>
-            <div class="place-self-center">{billDetail.quantity}</div>
-            <div class="place-self-center">{currencyFormat(billDetail.prices)}</div>
-            <div class="flex-wrap col-span-2 place-self-center">{billDetail.user_description}</div>
+            <div className="place-self-center">{billDetail.quantity}</div>
+            <div className="place-self-center">{currencyFormat(billDetail.prices)}</div>
+            <div className="flex-wrap col-span-2 place-self-center">{billDetail.user_description}</div>
         </div>
       ))}
 
-         <div class="grid grid-cols-5 pr-6 pl-6 pt-4 pb-4">
+         <div className="grid grid-cols-5 pr-6 pl-6 pt-4 pb-4">
         <div></div>
         <div></div>
-        <div class="place-self-center">{billDetails[0].bill.total_prices}</div>
-        <div class="col-span-2 place-self-center">
-          <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full mr-4">
+        <div className="place-self-center">{billDetails[0].bill.total_prices}</div>
+        <div className="col-span-2 place-self-center">
+          <button className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full mr-4">
             {" "}
             Reject
           </button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full ml-4">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full ml-4">
             {" "}
             Confirm
           </button>
