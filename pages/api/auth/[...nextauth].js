@@ -74,7 +74,7 @@ export default NextAuth({
       session.jwt = token.jwt;
       // session.access_token = token.access_token;
       session._user = token.user;
-      console.log("session: ", session);
+      // console.log("session: ", session);
       // console.log("token: ", token);
       return session;
     },
