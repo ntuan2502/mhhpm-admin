@@ -7,7 +7,7 @@ import { dateFormat } from "../../lib/lib";
 
 export const getServerSideProps = async () => {
   const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/bill-details?_sort=createdAt:DESC`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/bill-details?status=accept&_sort=createdAt:DESC`
   );
   const foods = await res.data;
 
@@ -16,11 +16,11 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Foods = ({ foods }) => {
+const AcceptPage = ({ foods }) => {
   return (
     <div className="border-2 border-gray border-solid rounded m-12 divide-y">
       <div className="flex justify-between pr-6 pl-6 pt-4 pb-4 ">
-        <h1 className="pt-2 text-2xl font-bold"> Foods</h1>
+        <h1 className="pt-2 text-2xl font-bold">Accept</h1>
       </div>
       <div className="grid grid-cols-6 pr-6 pl-6 pt-2 pb-2 ">
         <div className="place-self-center text-gray-400">Name</div>
@@ -45,8 +45,8 @@ const Foods = ({ foods }) => {
   );
 };
 
-export default Foods;
+export default AcceptPage;
 
-Foods.getLayout = function getLayout(page) {
+AcceptPage.getLayout = function getLayout(page) {
   return <Layout name="Foods">{page}</Layout>;
 };

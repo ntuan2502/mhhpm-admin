@@ -19,15 +19,17 @@ export default function Sidebar() {
         <Image src="/assets/images/Logo 1.png" width={82} height={90}></Image>
         <div className="font-Muli text-[25px] ml-4 font-bold">Dashboard</div>
       </div>
-      <div className="text-[16px] flex justify-center font-Mulish bg-[#C74A4A] p-4 text-white ">
-        <div className="pl-5 w-3/12">
-          <FontAwesomeIcon icon={faUtensils} />
+      <Link href="/foods">
+        <div className="text-[16px] flex justify-center font-Mulish bg-[#C74A4A] p-4 text-white cursor-pointer">
+          <div className="pl-5 w-3/12">
+            <FontAwesomeIcon icon={faUtensils} />
+          </div>
+          <div className="w-8/12">Foods</div>
+          <div className="w-1/12">
+            <FontAwesomeIcon icon={faCaretDown} />
+          </div>
         </div>
-        <div className="w-8/12">Foods</div>
-        <div className="w-1/12">
-          <FontAwesomeIcon icon={faCaretDown} />
-        </div>
-      </div>
+      </Link>
       <Link href="/foods/pending">
         <div className="text-[16px] flex font-Mulish bg-[#D85050] p-4 text-black cursor-pointer">
           <div className="w-2/5 pl-12">
@@ -44,12 +46,12 @@ export default function Sidebar() {
           <div>Reject</div>
         </div>
       </Link>
-      <Link href="/foods/done">
+      <Link href="/foods/accept">
         <div className="text-[16px] flex font-Mulish bg-[#EB5757] p-4 text-black cursor-pointer">
           <div className="w-2/5 pl-12">
             <FontAwesomeIcon icon={faAward} />
           </div>
-          <div>Done</div>
+          <div>Accept</div>
         </div>
       </Link>
       <Link href="/bills">
