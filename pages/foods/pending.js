@@ -22,22 +22,38 @@ const PendingPage = ({ foods }) => {
 			<div className="flex justify-between pr-6 pl-6 pt-4 pb-4 ">
 				<h1 className="pt-2 text-2xl font-bold"> Pending</h1>
 			</div>
-			<div className="grid grid-cols-6 pr-6 pl-6 pt-2 pb-2 ">
-				<div className="place-self-center text-gray-400">Name</div>
-				<div className="place-self-center text-gray-400">Table</div>
-				<div className="place-self-center text-gray-400">Description</div>
-				<div className="place-self-center text-gray-400">Status</div>
-				<div className="col-span-2 place-self-center text-gray-400">Time</div>
+			<div className="grid grid-cols-8 pr-6 pl-6 pt-2 pb-2 ">
+				<div className="col-span-1 place-self-center text-gray-400">Name</div>
+				<div className="col-span-1 place-self-center text-gray-400">Table</div>
+				<div className="col-span-2 place-self-center text-gray-400">
+					Description
+				</div>
+				<div className="col-span-1 place-self-center text-gray-400">Status</div>
+				<div className="col-span-1 place-self-center text-gray-400">Time</div>
+				<div className="col-span-1 place-self-center text-gray-400"></div>
+				<div className="col-span-1 place-self-center text-gray-400"></div>
 			</div>
 
 			{foods.map((food, key) => (
-				<div key={key} className="grid grid-cols-6 pr-6 pl-6 pt-6 pb-6">
-					<div className="">{food.food.name}</div>
-					<div className="place-self-center">null</div>
-					<div className="">{food.user_description}</div>
-					<div className="place-self-center">{food.status}</div>
-					<div className="flex-wrap col-span-2 place-self-center">
+				<div key={key} className="grid grid-cols-8 pr-6 pl-6 pt-6 pb-6">
+					<div className="col-span-1 place-self-center">{food.food.name}</div>
+					<div className="col-span-1 place-self-center">null</div>
+					<div className="col-span-2 place-self-center">
+						{food.user_description}
+					</div>
+					<div className="col-span-1 place-self-center">{food.status}</div>
+					<div className="flex-wrap col-span-1 place-self-center">
 						{dateFormat(food.createdAt)}
+					</div>
+					<div className="col-span-1 pl-12">
+						<button class="bg-[#F12B2C] text-white font-bold py-2 px-4 rounded-full">
+							Reject
+						</button>
+					</div>
+					<div className="col-span-1 pl-3">
+						<button class="bg-[#29CC97] text-white font-bold py-2 px-4 rounded-full">
+							Confirm
+						</button>
 					</div>
 				</div>
 			))}
