@@ -16,8 +16,6 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  
-
   const res = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/bills?_where[status]=pending&_sort=createdAt:DESC`,
     {
@@ -33,11 +31,10 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-
-
 const pendingPage = ({ bills }) => {
   const { data: session } = useSession();
   const router = useRouter();
+
   async function handleStatus(status, billId) {
     const res = await axios.put(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/bills/${billId}`,
@@ -79,7 +76,7 @@ const pendingPage = ({ bills }) => {
             {dateFormat(bill.createdAt)}
           </div>
           <button
-            onClick={() => handleStatus("done",bill._id)}
+            onClick={() => handleStatus("done", bill._id)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full ml-4"
           >
             Done
