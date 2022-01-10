@@ -9,6 +9,7 @@ module.exports = {
 				Mulish: ['Mulish'],
 				Muli: ['Muli'],
 			},
+			colors: { black_RGBA: 'rgba(0,0,0,0.3)' },
 		},
 	},
 	plugins: [],
