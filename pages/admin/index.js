@@ -146,18 +146,23 @@ const Admin = ({ revenues1, revenues2, year, preYear, nextYear }) => {
   };
 
   return (
-    <>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => {
-          setStartDate(date);
-          router.push(`admin?year=${date.getFullYear()}`);
-        }}
-        showYearPicker
-        dateFormat="yyyy"
-      />
-      <Line options={options} data={data} />
-      <div className="mt-10 mx-5">
+    <div className="mx-5">
+      <div className="flex justify-center items-center">
+        <div className="mr-2 font-bold">Năm:</div>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => {
+            setStartDate(date);
+            router.push(`admin?year=${date.getFullYear()}`);
+          }}
+          showYearPicker
+          dateFormat="yyyy"
+        />
+      </div>
+      <div className="flex w-2/3">
+        <Line options={options} data={data} />
+      </div>
+      <div className="mt-10">
         <div className="flex">
           Doanh thu năm {preYear}:
           <div className="font-bold px-2">
@@ -171,7 +176,7 @@ const Admin = ({ revenues1, revenues2, year, preYear, nextYear }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
