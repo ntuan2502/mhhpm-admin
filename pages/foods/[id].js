@@ -1,42 +1,36 @@
-// export const getStaticPaths = async () => {
-// 	const res = await fetch('https://jsonplaceholder.typicode.com/users');
-// 	const data = await res.json();
-
+import { getSession } from "next-auth/react";
 import Layout from "../../components/Layout";
 
-// 	const paths = data.map((monan) => {
-// 		return {
-// 			params: { id: monan.id.toString() },
-// 		};
-// 	});
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  }
 
-// 	return {
-// 		paths,
-// 		fallback: false,
-// 	};
-// };
+  const id = ctx.params.id;
+  const res = await fetch("https://jsonplaceholder.typicode.com/users/" + id);
+  const data = await res.json();
 
-export const getServerSideProps = async (context) => {
-	const id = context.params.id;
-	const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
-	const data = await res.json();
-
-	return {
-		props: { food: data },
-	};
+  return {
+    props: { food: data },
+  };
 };
 
 const Details = ({ food }) => {
-	return (
-		<div>
-			<h1>{food.name}</h1>
-			<p>{food.Details}</p>
-		</div>
-	);
+  return (
+    <div>
+      <h1>{food.name}</h1>
+      <p>{food.Details}</p>
+    </div>
+  );
 };
 
 export default Details;
 
 Details.getLayout = function getLayout(page) {
-	return <Layout>{page}</Layout>;
-  };
+  return <Layout>{page}</Layout>;
+};

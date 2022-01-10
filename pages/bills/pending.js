@@ -1,13 +1,28 @@
 import axios from "axios";
+import { getSession } from "next-auth/react";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { useEffect } from "react";
 import Layout from "../../components/Layout";
 import { dateFormat } from "../../lib/lib";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  }
+
   const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/bills?_where[status]=pending&_sort=createdAt:DESC`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/bills?_where[status]=pending&_sort=createdAt:DESC`,
+    {
+      headers: {
+        Authorization: `Bearer ${session?.jwt}`,
+      },
+    }
   );
   const bills = await res.data;
 
@@ -31,7 +46,7 @@ const pendingPage = ({ bills }) => {
 
       {bills.map((bill, key) => (
         <div key={key} className="grid grid-cols-5 pr-6 pl-6 pt-6 pb-6">
-          <Link href={`bills/${bill.id}`}>
+          <Link href={`/bills/${bill.id}`}>
             <div className="cursor-pointer">{bill.id}</div>
           </Link>
           <div className="place-self-center">{bill.table.name}</div>

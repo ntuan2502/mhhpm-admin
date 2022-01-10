@@ -8,8 +8,6 @@ import Layout from "../components/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const getServerSideProps = async (ctx) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await res.json();
   const session = await getSession(ctx);
   if (!session) {
     return {
@@ -18,6 +16,9 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   }
+
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await res.json();
 
   return {
     props: { food: data },

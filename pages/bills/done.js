@@ -1,13 +1,28 @@
 import axios from "axios";
+import { getSession } from "next-auth/react";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { useEffect } from "react";
 import Layout from "../../components/Layout";
 import { dateFormat } from "../../lib/lib";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  }
+
   const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/bills?_where[status]=done&_sort=createdAt:DESC`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/bills?_where[status]=done&_sort=createdAt:DESC`,
+    {
+      headers: {
+        Authorization: `Bearer ${session?.jwt}`,
+      },
+    }
   );
   const bills = await res.data;
 
