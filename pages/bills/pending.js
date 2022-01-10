@@ -31,7 +31,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const pendingPage = ({ bills }) => {
+const PendingPage = ({ bills }) => {
   const { data: session } = useSession();
   const router = useRouter();
 
@@ -87,8 +87,8 @@ const pendingPage = ({ bills }) => {
   );
 };
 
-export default pendingPage;
+export default PendingPage;
 
-pendingPage.getLayout = function getLayout(page) {
+PendingPage.getLayout = function getLayout(page) {
   return <Layout name="Bills">{page}</Layout>;
 };
