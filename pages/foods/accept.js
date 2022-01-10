@@ -40,6 +40,7 @@ const AcceptPage = ({ foods }) => {
       <div className="grid grid-cols-8 pr-6 pl-6 pt-2 pb-2 ">
         <div className="place-self-center text-gray-400">Name</div>
         <div className="place-self-center text-gray-400">Table</div>
+        <div className="place-self-center text-gray-400">Quantity</div>
         <div className="col-span-2 place-self-center text-gray-400">
           Description
         </div>
@@ -53,6 +54,7 @@ const AcceptPage = ({ foods }) => {
         <div key={key} className="grid grid-cols-8 pr-6 pl-6 pt-6 pb-6">
           <div className="place-self-center">{food.food.name}</div>
           <div className="place-self-center">null</div>
+          <div className="place-self-center">{food.quantity}</div>
           <div className="col-span-2 place-self-center">
             {food.user_description}
           </div>
