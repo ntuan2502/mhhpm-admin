@@ -132,10 +132,10 @@ const PendingPage = ({ foods }) => {
 								placeholder="Description"
 							></textarea>
 							<button
-								className="bg-[#29CC97] content-center text-white font-bold py-2 px-4 rounded-full"
+								className="bg-blue-500 hover:bg-blue-700 content-center text-white font-bold py-2 px-4 rounded-full"
 								onClick={() => handleStatus('reject', reject)}
 							>
-								Accept
+								Done
 							</button>
 						</div>
 					</div>
